@@ -12,7 +12,7 @@ SDL2_LDFLAGS = $(shell sdl2-config --libs)
 TARGET = doodoo
 
 # Source files
-SRCS = main.c
+SRCS = $(wildcard *.c) 
 
 # Object files
 OBJS = $(SRCS:.c=.o)
