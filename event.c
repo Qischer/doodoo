@@ -65,7 +65,7 @@ int eventLoop(SDL_Event* e) {
 
 void renderMap() {
     SDL_SetRenderDrawColor(gRenderer, 
-                           0xDF, 0x32, 0xDF, 
+                           0xAF, 0xAF, 0xAF, 
                            SDL_ALPHA_OPAQUE);
 
     int box_w = SCREEN_WIDTH / MAP_COL;
