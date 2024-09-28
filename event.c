@@ -74,10 +74,9 @@ void renderMap() {
     vec2i box_pos = {0, 0};
 
     int i, j;
-    for (i = 0; i < MAP_ROW; i++) {
+    for (i = 0; i <= MAP_ROW; i++) {
         for (j = 0; j < MAP_COL; j++) {
 
-            usleep(50000);
             if(map[i * MAP_COL + j] == 0) continue;
             
             SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};
