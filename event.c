@@ -86,9 +86,8 @@ void renderMap() {
             SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};
 
             SDL_RenderDrawRect(gRenderer, &rect);
-            box_pos.x += box_w;
+            box_pos.x = j*box_w;
         }
-        box_pos.x = 0;
-        box_pos.y += box_h;
+        box_pos.y = i*box_h;
     }
 }
