@@ -80,6 +80,9 @@ void renderMap() {
 
 
             printf("i:%d j:%d calc:%d map:%d\n",i,j, i * MAP_COL + j, map[i * MAP_COL + j]);
+
+            if(map[i * MAP_COL + j] == 0) continue;
+            
             SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};
 
             SDL_RenderDrawRect(gRenderer, &rect);
