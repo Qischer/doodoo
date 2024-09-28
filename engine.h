@@ -28,15 +28,7 @@ extern SDL_Renderer* gRenderer;
 extern SDL_Texture* gTexture;
 
 //static u32 pixels[SCREEN_WIDTH * SCREEN_HEIGHT];
-static u8 map[MAP_ROW * MAP_COL] = 
-    {
-        1,1,1,1,1,1,1,1,
-        1,0,0,0,0,0,0,1,
-        1,0,0,0,0,0,0,1,
-        1,0,0,0,0,0,0,1,
-        1,0,0,0,0,0,0,1,
-        1,1,1,1,1,1,1,1,
-    };
+extern u8 map[MAP_ROW * MAP_COL];
 
 
 //Player State
