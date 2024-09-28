@@ -76,6 +76,9 @@ void renderMap() {
     int i, j;
     for (i = 0; i < MAP_ROW; i++) {
         for (j = 0; j < MAP_COL; j++) {
+
+            if ( map[i*MAP_COL + j] == 0 ) continue; 
+
             SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};
 
             SDL_RenderDrawRect(gRenderer, &rect);
