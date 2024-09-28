@@ -78,9 +78,8 @@ void renderMap() {
     for (i = 0; i < MAP_ROW; i++) {
         for (j = 0; j < MAP_COL; j++) {
 
-            if ( map[i*MAP_COL + j] == 0 ) continue; 
 
-            printf("x: %d y: %d\n", box_pos.x, box_pos.y);
+            printf("i:%d j:%d map:%d\n",i,j, map[i * MAP_COL + j]);
             SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};
 
             SDL_RenderDrawRect(gRenderer, &rect);
