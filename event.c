@@ -1,7 +1,6 @@
 #include <SDL2/SDL.h>
-#include <SDL2/SDL_rect.h>
-#include <SDL2/SDL_render.h>
 #include <math.h>
+#include <unistd.h>
 #include <stdio.h>
 #include "engine.h"
 
@@ -78,9 +77,7 @@ void renderMap() {
     for (i = 0; i < MAP_ROW; i++) {
         for (j = 0; j < MAP_COL; j++) {
 
-
-            printf("i:%d j:%d calc:%d map:%d\n",i,j, i * MAP_COL + j, map[i * MAP_COL + j]);
-
+            sleep(50);
             if(map[i * MAP_COL + j] == 0) continue;
             
             SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};
