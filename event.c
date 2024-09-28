@@ -74,13 +74,12 @@ void renderMap() {
 
     vec2i box_pos = {0, 0};
 
-    printf("%d\n", map[0]);
-
     int i, j;
     for (i = 0; i < MAP_ROW; i++) {
         for (j = 0; j < MAP_COL; j++) {
 
 
+            printf("i:%d j:%d calc:%d map:%d\n",i,j, i * MAP_COL + j, map[i * MAP_COL + j]);
             SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};
 
             SDL_RenderDrawRect(gRenderer, &rect);
