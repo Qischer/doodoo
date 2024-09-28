@@ -60,6 +60,8 @@ int eventLoop(SDL_Event* e) {
                        player->pos.x, player->pos.y, 
                        player->pos.x + s*player->dir.x,
                        player->pos.y + s*player->dir.y);
+    
+    renderMap();
     return SUCCESS;
 }
 
