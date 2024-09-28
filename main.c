@@ -1,8 +1,17 @@
-
 #include <SDL2/SDL.h>
 #include <stdio.h>
 #include "config.h"
 #include "engine.h"
+
+static u8 map[MAP_ROW * MAP_COL] = 
+    {
+        1,1,1,1,1,1,1,1,
+        1,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,1,
+        1,0,0,0,0,0,0,1,
+        1,1,1,1,1,1,1,1,
+    };
 
 /*
  * Main - main.c
@@ -13,15 +22,6 @@ int main(int argc, char *argv[])
         printf("Error creating window! Err: %s\n", SDL_GetError());
         return EXIT_FAILURE;
     }
-
-    /*if ( loadMedia("assets/fuckface.bmp") ) {*/
-    /*    printf("Error loading media! Err: %s\n", SDL_GetError());*/
-    /*    return EXIT_FAILURE;*/
-    /*}*/
-    /**/
-    /*if ( SDL_UpdateWindowSurface(gWindow) ) {*/
-    /*    printf("Error updating window! Err: %s\n", SDL_GetError());*/
-    /*}*/
 
     eventInit();
 
@@ -36,7 +36,16 @@ int main(int argc, char *argv[])
                 break;
             }
 
-            eventLoop();
+            /*
+            SDL_SetRenderDrawColor(gRenderer, 
+                                   0, 0, 0, 
+                                   SDL_ALPHA_OPAQUE);
+            SDL_RenderClear(gRenderer);
+
+            eventLoop(&e);
+
+            SDL_RenderPresent(gRenderer);
+            */
         }
     }
     

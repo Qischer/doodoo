@@ -11,6 +11,9 @@ SDL2_LDFLAGS = $(shell sdl2-config --libs)
 # Executable name
 TARGET = doodoo
 
+# Math library
+LIBS = -lm
+
 # Source files
 SRCS = $(wildcard *.c) 
 
@@ -18,11 +21,11 @@ SRCS = $(wildcard *.c)
 OBJS = $(SRCS:.c=.o)
 
 # Default target
-all: $(TARGET)
+all: $(TARGET) git_commit
 
 # Build the executable
 $(TARGET): $(OBJS)
-	$(CC) $(OBJS) $(SDL2_LDFLAGS) -o $(TARGET)
+	$(CC) $(OBJS) $(SDL2_LDFLAGS) $(LIBS) -o $(TARGET)
 
 # Compile source files into object files
 %.o: %.c
@@ -31,4 +34,9 @@ $(TARGET): $(OBJS)
 # Clean up
 clean:
 	rm -f $(OBJS) $(TARGET)
+
+# Git commit step after successful build
+git_commit:
+	git add .
+	git commit -m "Build commit: $(shell date '+%Y-%m-%d %H:%M:%S')" || true
 
