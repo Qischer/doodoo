@@ -35,7 +35,6 @@ int main(int argc, char *argv[])
                 break;
             }
 
-            /*
             SDL_SetRenderDrawColor(gRenderer, 
                                    0, 0, 0, 
                                    SDL_ALPHA_OPAQUE);
@@ -44,7 +43,6 @@ int main(int argc, char *argv[])
             eventLoop(&e);
 
             SDL_RenderPresent(gRenderer);
-            */
         }
     }
     
