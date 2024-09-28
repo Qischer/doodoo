@@ -2,6 +2,7 @@
 #include <SDL2/SDL_rect.h>
 #include <SDL2/SDL_render.h>
 #include <math.h>
+#include <stdio.h>
 #include "engine.h"
 
 /*
@@ -73,20 +74,17 @@ void renderMap() {
 
     vec2i box_pos = {0, 0};
 
-    SDL_Rect rect = {0, 2*box_h, box_w, box_h};
-    SDL_RenderDrawRect(gRenderer, &rect);
+    int i, j;
+    for (i = 0; i < MAP_ROW; i++) {
+        for (j = 0; j < MAP_COL; j++) {
 
-    /*int i, j;*/
-    /*for (i = 0; i < MAP_ROW; i++) {*/
-    /*    for (j = 0; j < MAP_COL; j++) {*/
-    /**/
-    /*        //if ( map[i*MAP_COL + j] == 0 ) continue; */
-    /**/
-    /*        SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};*/
-    /**/
-    /*        SDL_RenderDrawRect(gRenderer, &rect);*/
-    /*        box_pos.x += box_w;*/
-    /*    }*/
-    /*    box_pos.y += box_h;*/
-    /*}*/
+            //if ( map[i*MAP_COL + j] == 0 ) continue; 
+            printf("x: %d y: %d\n", box_pos.x, box_pos.y);
+            SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};
+
+            SDL_RenderDrawRect(gRenderer, &rect);
+            box_pos.x += box_w;
+        }
+        box_pos.y += box_h;
+    }
 }
