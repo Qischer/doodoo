@@ -74,7 +74,8 @@ void renderMap() {
     vec2i box_pos = {0, 0};
 
     int i, j;
-    for (i = 0; i <= MAP_ROW; i++) {
+    for (i = 0; i < MAP_ROW; i++) {
+        box_pos.y = i*box_h;
         for (j = 0; j < MAP_COL; j++) {
 
             if(map[i * MAP_COL + j] == 0) continue;
@@ -84,6 +85,5 @@ void renderMap() {
             SDL_RenderDrawRect(gRenderer, &rect);
             box_pos.x = j*box_w;
         }
-        box_pos.y = i*box_h;
     }
 }
