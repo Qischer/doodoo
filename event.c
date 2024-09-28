@@ -73,7 +73,7 @@ void renderMap() {
 
     vec2i box_pos = {0, 0};
 
-    SDL_Rect rect = {0, box_h, box_w, box_h};
+    SDL_Rect rect = {0, 2*box_h, box_w, box_h};
     SDL_RenderDrawRect(gRenderer, &rect);
 
     /*int i, j;*/
