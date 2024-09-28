@@ -73,17 +73,20 @@ void renderMap() {
 
     vec2i box_pos = {0, 0};
 
-    int i, j;
-    for (i = 0; i < MAP_ROW; i++) {
-        for (j = 0; j < MAP_COL; j++) {
+    SDL_Rect rect = {0, box_h, box_w, box_h};
+    SDL_RenderDrawRect(gRenderer, &rect);
 
-            //if ( map[i*MAP_COL + j] == 0 ) continue; 
-
-            SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};
-
-            SDL_RenderDrawRect(gRenderer, &rect);
-            box_pos.x += box_w;
-        }
-        box_pos.y += box_h;
-    }
+    /*int i, j;*/
+    /*for (i = 0; i < MAP_ROW; i++) {*/
+    /*    for (j = 0; j < MAP_COL; j++) {*/
+    /**/
+    /*        //if ( map[i*MAP_COL + j] == 0 ) continue; */
+    /**/
+    /*        SDL_Rect rect = {box_pos.x, box_pos.y, box_w, box_h};*/
+    /**/
+    /*        SDL_RenderDrawRect(gRenderer, &rect);*/
+    /*        box_pos.x += box_w;*/
+    /*    }*/
+    /*    box_pos.y += box_h;*/
+    /*}*/
 }
