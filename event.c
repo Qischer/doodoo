@@ -28,7 +28,7 @@ int eventLoop(SDL_Event* e) {
     u8 s = 10;
 
     float speed = MOVE_SPEED;
-    float th = 5 * 0.0174f;
+    float th = speed * 0.0174f;
 
     float dir_x = player->dir.x;
     float dir_y = player->dir.y;
@@ -54,8 +54,12 @@ int eventLoop(SDL_Event* e) {
         }
     }
 
+    SDL_RenderSetScale(gRenderer, 5.0f, 5.0f);
+
     SDL_RenderDrawPoint(gRenderer, 
                         player->pos.x, player->pos.y);
+
+    SDL_RenderSetScale(gRenderer, 1.0f, 1.0f);
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
                        player->pos.x + s*player->dir.x,
