@@ -55,8 +55,8 @@ int eventLoop(SDL_Event* e) {
     sdist.y = sides.y * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
 
 
-    printf("x: %d - y:%d\n", sides.x, sides.y);
-    //printf("x: %.2f - y:%.2f\n", dir_x, dir_y);
+    //printf("x: %d - y:%d\n", sides.x, sides.y);
+    printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
 
     if ( e->type == SDL_KEYDOWN ) {
         SDL_KeyCode code = e->key.keysym.sym; 
