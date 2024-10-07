@@ -56,7 +56,7 @@ int eventLoop(SDL_Event* e) {
 
 
     //printf("x: %d - y:%d\n", sides.x, sides.y);
-    printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
+    //printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
 
     if ( e->type == SDL_KEYDOWN ) {
         SDL_KeyCode code = e->key.keysym.sym; 
@@ -79,13 +79,18 @@ int eventLoop(SDL_Event* e) {
         }
     }
 
+    // Draw nearest point
+
     SDL_RenderDrawPoint(gRenderer, 
                         player->pos.x, player->pos.y);
     
     SDL_RenderDrawPoint(gRenderer, 
                        player->pos.x + sides.x*signf(dir_x),
-                       player->pos.y + (sides.x*fabs(dir_y/dir_x)*signf(dir_y)));
+                       player->pos.y + sides.x*fabs(dir_y/dir_x)*signf(dir_y));
 
+    SDL_RenderDrawPoint(gRenderer, 
+                       player->pos.x + sides.y*fabs(dir_x/dir_y)*signf(dir_x),
+                       player->pos.y + sides.y*signf(dir_y));
     /*SDL_RenderDrawPoint(gRenderer, */
     /*                   player->pos.x + sdist.y*player->dir.x,*/
     /*                   player->pos.y + sdist.y*player->dir.y);*/
