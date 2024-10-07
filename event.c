@@ -5,7 +5,7 @@
 u32 box_w;
 u32 box_h;
 
-u8 signf(float);
+i8 signf(float);
 /*
  * event.c - Event Initialization and Loop
  */
@@ -124,6 +124,6 @@ void renderMap() {
     }
 }
 
-u8 signf(float num) {
+i8 signf(float num) {
     return num < 0 ? -1 : 1;
 };

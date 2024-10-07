@@ -8,6 +8,7 @@
 
 // Type redefinitions
 typedef uint8_t u8;
+typedef int8_t i8;
 typedef uint32_t u32;
 
 // Engine header
