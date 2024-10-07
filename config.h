@@ -5,3 +5,7 @@
 #define MAP_COL 8
 
 #define FOV 30
+
+
+/* Player Stat */
+#define MOVE_SPEED 10
