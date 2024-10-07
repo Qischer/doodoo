@@ -39,6 +39,9 @@ int eventLoop(SDL_Event* e) {
     float dir_x = player->dir.x;
     float dir_y = player->dir.y;
 
+    float tg = dir_y / dir_x; //tan 
+    float ctg = dir_x / dir_y; //cotan
+
     float pos_x = player->pos.x;
     float pos_y = player->pos.y;
 
@@ -53,7 +56,17 @@ int eventLoop(SDL_Event* e) {
     vec2i sdist;
     sdist.x = sides.x * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
     sdist.y = sides.y * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
+    
+    u8 hit = 0;
+    vec2i hitcord; 
+    hitcord.x = player->mapcord.x;
+    hitcord.y = player->mapcord.y;
+    
+    while (hit == 0) {
 
+        u32 idx = hitcord.x + hitcord.y * MAP_COL; 
+        if (map[idx] == 1) hit = 1;
+    }
 
     //printf("x: %d - y:%d\n", sides.x, sides.y);
     //printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
@@ -85,12 +98,12 @@ int eventLoop(SDL_Event* e) {
                         player->pos.x, player->pos.y);
     
     SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + sides.x*signf(dir_x),
-                       player->pos.y + sides.x*fabs(dir_y/dir_x)*signf(dir_y));
+                       player->pos.x + sdist.x*ctg,
+                       player->pos.y + sdist.x*tg);
 
     SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + sides.y*fabs(dir_x/dir_y)*signf(dir_x),
-                       player->pos.y + sides.y*signf(dir_y));
+                       player->pos.x + sdist.y*ctg,
+                       player->pos.y + sdist.y*tg);
     /*SDL_RenderDrawPoint(gRenderer, */
     /*                   player->pos.x + sdist.y*player->dir.x,*/
     /*                   player->pos.y + sdist.y*player->dir.y);*/
