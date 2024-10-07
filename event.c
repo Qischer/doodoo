@@ -1,4 +1,5 @@
 #include "engine.h"
+#include <stdio.h>
 
 u32 box_w;
 u32 box_h;
@@ -23,6 +24,8 @@ int eventLoop(SDL_Event* e) {
     SDL_SetRenderDrawColor(gRenderer, 
                            0xFF, 0xFF, 0xFF, 
                            SDL_ALPHA_OPAQUE);
+
+    printf("printing coord\n");
 
     u8 s = 10;
 
