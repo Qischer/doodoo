@@ -38,6 +38,8 @@ extern u8 map[MAP_ROW * MAP_COL];
 struct player {
     vec2 pos;
     vec2 dir;
+
+    vec2i mapcord;
 };
 
 extern struct player* player;

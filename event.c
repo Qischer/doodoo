@@ -25,7 +25,10 @@ int eventLoop(SDL_Event* e) {
                            0xFF, 0xFF, 0xFF, 
                            SDL_ALPHA_OPAQUE);
 
-    printf("printing coord\n");
+    player->mapcord.x = player->pos.x / box_w;
+    player->mapcord.y = player->pos.y / box_h;
+
+    printf("x: %d - y:%d\n", player->mapcord.x, player->mapcord.y);
 
     u8 s = 10;
 
