@@ -125,5 +125,5 @@ void renderMap() {
 }
 
 u8 signf(float num) {
-    return (u8) num / fabs(num);
+    return num < 0 ? -1 : 1;
 };
