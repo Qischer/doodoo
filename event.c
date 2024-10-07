@@ -37,12 +37,20 @@ int eventLoop(SDL_Event* e) {
     float dir_x = player->dir.x;
     float dir_y = player->dir.y;
 
-    vec2i delDist;
-    delDist.x = box_w * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
-    delDist.y = box_h * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
+    float pos_x = player->pos.x;
+    float pos_y = player->pos.y;
 
-    //printf("x: %d - y:%d\n", player->mapcord.x, player->mapcord.y);
-    printf("x: %.2f - y:%.2f\n", dir_x, dir_y);
+    vec2i delta;
+    delta.x = box_w * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
+    delta.y = box_h * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
+
+    vec2i sides;
+    sides.x = dir_x < 0 ? (u32)pos_x % box_w : box_w - ((u32)pos_x % box_w);
+    sides.y = dir_y < 0 ? (u32)pos_y % box_h : box_h - ((u32)pos_y % box_h);
+
+
+    printf("x: %d - y:%d\n", sides.x, sides.y);
+    //printf("x: %.2f - y:%.2f\n", dir_x, dir_y);
 
     if ( e->type == SDL_KEYDOWN ) {
         SDL_KeyCode code = e->key.keysym.sym; 
