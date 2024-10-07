@@ -44,7 +44,7 @@ int eventLoop(SDL_Event* e) {
             player->pos.x -= speed * player->dir.x;
             player->pos.y -= speed * player->dir.y;
         }
-        if (code == SDLK_s ){
+        if (code == SDLK_a ){
             player->dir.x = dir_x * cosf(-th) - dir_y * sinf(-th);
             player->dir.y = dir_x * sinf(-th) + dir_y * cosf(-th);
         }
