@@ -83,8 +83,8 @@ int eventLoop(SDL_Event* e) {
                         player->pos.x, player->pos.y);
     
     SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + sdist.x*player->dir.x,
-                       player->pos.y + sdist.x*player->dir.y);
+                       player->pos.x + sdist.x*signf(player->dir.x),
+                       player->pos.y + sdist.x*signf(player->dir.y));
 
     /*SDL_RenderDrawPoint(gRenderer, */
     /*                   player->pos.x + sdist.y*player->dir.x,*/
@@ -92,8 +92,8 @@ int eventLoop(SDL_Event* e) {
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
-                       player->pos.x + s*signf(player->dir.x),
-                       player->pos.y + s*signf(player->dir.y));
+                       player->pos.x + s*player->dir.x,
+                       player->pos.y + s*player->dir.y);
     
     renderMap();
     return SUCCESS;
