@@ -62,11 +62,11 @@ int eventLoop(SDL_Event* e) {
     hitcord.x = player->mapcord.x;
     hitcord.y = player->mapcord.y;
     
-    while (hit == 0) {
-
-        u32 idx = hitcord.x + hitcord.y * MAP_COL; 
-        if (map[idx] == 1) hit = 1;
-    }
+    /*while (hit == 0) {*/
+    /**/
+    /*    u32 idx = hitcord.x + hitcord.y * MAP_COL; */
+    /*    if (map[idx] == 1) hit = 1;*/
+    /*}*/
 
     //printf("x: %d - y:%d\n", sides.x, sides.y);
     //printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
