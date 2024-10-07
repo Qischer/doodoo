@@ -1,5 +1,8 @@
 #include "engine.h"
 
+u32 box_w;
+u32 box_h;
+
 /*
  * event.c - Event Initialization and Loop
  */
@@ -50,12 +53,9 @@ int eventLoop(SDL_Event* e) {
         }
     }
 
-    SDL_RenderSetScale(gRenderer, 5.0f, 5.0f);
-
     SDL_RenderDrawPoint(gRenderer, 
                         player->pos.x, player->pos.y);
 
-    SDL_RenderSetScale(gRenderer, 1.0f, 1.0f);
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
                        player->pos.x + s*player->dir.x,
@@ -70,8 +70,8 @@ void renderMap() {
                            0xAF, 0xAF, 0xAF, 
                            SDL_ALPHA_OPAQUE);
 
-    int box_w = SCREEN_WIDTH / MAP_COL;
-    int box_h = SCREEN_HEIGHT / MAP_ROW;
+    box_w = SCREEN_WIDTH / MAP_COL;
+    box_h = SCREEN_HEIGHT / MAP_ROW;
 
     vec2i box_pos = {0, 0};
 
