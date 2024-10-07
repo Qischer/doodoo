@@ -5,9 +5,11 @@
 u32 box_w;
 u32 box_h;
 
+u8 signf(float);
 /*
  * event.c - Event Initialization and Loop
  */
+
 int eventInit() {
     // Render 2D line
     SDL_SetRenderDrawColor(gRenderer, 
@@ -90,8 +92,8 @@ int eventLoop(SDL_Event* e) {
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
-                       player->pos.x + s*player->dir.x,
-                       player->pos.y + s*player->dir.y);
+                       player->pos.x + s*signf(player->dir.x),
+                       player->pos.y + s*signf(player->dir.y));
     
     renderMap();
     return SUCCESS;
@@ -121,3 +123,7 @@ void renderMap() {
         }
     }
 }
+
+u8 signf(float num) {
+    return (u8) num / fabs(num);
+};
