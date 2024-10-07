@@ -84,9 +84,9 @@ int eventLoop(SDL_Event* e) {
                        player->pos.x + sdist.x*player->dir.x,
                        player->pos.y + sdist.x*player->dir.y);
 
-    SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + sdist.y*player->dir.x,
-                       player->pos.y + sdist.y*player->dir.y);
+    /*SDL_RenderDrawPoint(gRenderer, */
+    /*                   player->pos.x + sdist.y*player->dir.x,*/
+    /*                   player->pos.y + sdist.y*player->dir.y);*/
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
