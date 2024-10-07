@@ -1,6 +1,4 @@
-#include <SDL2/SDL.h>
 #include <stdio.h>
-#include "config.h"
 #include "engine.h"
 
 u8 map[MAP_ROW * MAP_COL] = 

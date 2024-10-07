@@ -1,7 +1,3 @@
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_keycode.h>
-#include <math.h>
-#include <unistd.h>
 #include "engine.h"
 
 /*

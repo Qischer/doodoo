@@ -1,7 +1,5 @@
-#include <SDL2/SDL.h>
 #include <stdlib.h>
 #include "engine.h"
-#include "config.h"
 
 SDL_Window* gWindow; 
 SDL_Renderer* gRenderer;

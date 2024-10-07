@@ -1,7 +1,10 @@
 #include <SDL2/SDL.h> 
 #include <stdint.h>
+#include <math.h>
+
 #include "geometry.h"
 #include "config.h"
+#include "mad.h"
 
 // Type redefinitions
 typedef uint8_t u8;
