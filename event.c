@@ -1,4 +1,5 @@
 #include "engine.h"
+#include <math.h>
 #include <stdio.h>
 
 u32 box_w;
@@ -28,8 +29,6 @@ int eventLoop(SDL_Event* e) {
     player->mapcord.x = player->pos.x / box_w;
     player->mapcord.y = player->pos.y / box_h;
 
-    printf("x: %d - y:%d\n", player->mapcord.x, player->mapcord.y);
-
     u8 s = 10;
 
     float speed = MOVE_SPEED;
@@ -37,6 +36,13 @@ int eventLoop(SDL_Event* e) {
 
     float dir_x = player->dir.x;
     float dir_y = player->dir.y;
+
+    vec2i delDist;
+    delDist.x = box_w * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
+    delDist.y = box_h * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
+
+    //printf("x: %d - y:%d\n", player->mapcord.x, player->mapcord.y);
+    printf("x: %.2f - y:%.2f\n", dir_x, dir_y);
 
     if ( e->type == SDL_KEYDOWN ) {
         SDL_KeyCode code = e->key.keysym.sym; 
