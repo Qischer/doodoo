@@ -48,6 +48,10 @@ int eventLoop(SDL_Event* e) {
     sides.x = dir_x < 0 ? (u32)pos_x % box_w : box_w - ((u32)pos_x % box_w);
     sides.y = dir_y < 0 ? (u32)pos_y % box_h : box_h - ((u32)pos_y % box_h);
 
+    vec2i sdist;
+    sdist.x = sides.x * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
+    sdist.y = sides.y * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
+
 
     printf("x: %d - y:%d\n", sides.x, sides.y);
     //printf("x: %.2f - y:%.2f\n", dir_x, dir_y);
@@ -75,6 +79,14 @@ int eventLoop(SDL_Event* e) {
 
     SDL_RenderDrawPoint(gRenderer, 
                         player->pos.x, player->pos.y);
+    
+    SDL_RenderDrawPoint(gRenderer, 
+                       player->pos.x + sdist.x*player->dir.x,
+                       player->pos.y + sdist.x*player->dir.y);
+
+    SDL_RenderDrawPoint(gRenderer, 
+                       player->pos.x + sdist.y*player->dir.x,
+                       player->pos.y + sdist.y*player->dir.y);
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
