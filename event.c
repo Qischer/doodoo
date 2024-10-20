@@ -130,7 +130,7 @@ int eventLoop(SDL_Event* e) {
                        player->pos.y + rh.dist.x*_sn);
 
     SDL_SetRenderDrawColor(gRenderer, 
-                           0x00, 0xAF, 0x00, 
+                           0x00, 0x00, 0xAF, 
                            SDL_ALPHA_OPAQUE);
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
