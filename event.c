@@ -126,7 +126,8 @@ int eventLoop(SDL_Event* e) {
                            SDL_ALPHA_OPAQUE);
     
     u32 hitdist = min(rh.dist.x, rh.dist.y);
-    SDL_RenderDrawPoint(gRenderer, 
+    SDL_RenderDrawLine(gRenderer, 
+                       player->pos.x, player->pos.y, 
                        player->pos.x + hitdist*_cs,
                        player->pos.y + hitdist*_sn);
 
