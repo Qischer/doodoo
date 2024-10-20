@@ -78,6 +78,9 @@ int eventLoop(SDL_Event* e) {
     
     u8 step = 0; // depth step
     do {
+        u32 idx = rh.cord.x + rh.cord.y * MAP_COL; 
+        if (map[idx] == 1) {rh.hit = 1; break;}
+
         if (rh.dist.x < rh.dist.y) {
             rh.dist.x += delta.x;
             rh.cord.x += signf(dir_x);
@@ -87,11 +90,7 @@ int eventLoop(SDL_Event* e) {
             rh.cord.y += signf(dir_y);
         }
 
-        u32 idx = rh.cord.x + rh.cord.y * MAP_COL; 
-        if (map[idx] == 1) {rh.hit = 1;}
-
-        step++;
-    } while (rh.hit == 0);
+    } while (1);
 
     //printf("x: %d - y:%d\n", sides.x, sides.y);
     //printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
