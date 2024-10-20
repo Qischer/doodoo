@@ -42,6 +42,9 @@ int eventLoop(SDL_Event* e) {
     float tg = dir_y / dir_x; //tan 
     float ctg = dir_x / dir_y; //cotan
 
+    float sn = dir_y / sqrt(dir_y*dir_y + dir_x*dir_x);
+    float cs = dir_x / sqrt(dir_y*dir_y + dir_x*dir_x); 
+
     float pos_x = player->pos.x;
     float pos_y = player->pos.y;
 
