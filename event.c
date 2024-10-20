@@ -70,8 +70,8 @@ int eventLoop(SDL_Event* e) {
     struct rayhit rh;
 
     rh.hit = 0;
-    rh.cord.x = player->mapcord.x + signf(dir_x);
-    rh.cord.y = player->mapcord.y + signf(dir_y);
+    rh.cord.x = player->mapcord.x;
+    rh.cord.y = player->mapcord.y;
 
     rh.dist.x = sdist.x;
     rh.dist.y = sdist.y;
