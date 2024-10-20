@@ -90,9 +90,9 @@ int eventLoop(SDL_Event* e) {
         if (map[idx] == 1) rh.hit = 1;
 
         step++;
-    } while (step <= 4 && rh.hit == 0);
+    } while (step <= 2 && rh.hit == 0);
 
-    if (rh.hit) printf("HIT wall! x: %d - y: %d\n", rh.cord.x, rh.cord.y);
+    if (rh.hit == 1) printf("HIT wall! x: %d - y: %d\n", rh.cord.x, rh.cord.y);
 
     //printf("x: %d - y:%d\n", sides.x, sides.y);
     //printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
