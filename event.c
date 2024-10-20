@@ -101,8 +101,8 @@ int eventLoop(SDL_Event* e) {
                         player->pos.x, player->pos.y);
     
     SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + signf(dir_x)*sdist.x*ctg,
-                       player->pos.y + signf(dir_y)*sdist.y*tg);
+                       player->pos.x + signf(dir_x)*sdist.x*cs,
+                       player->pos.y + signf(dir_y)*sdist.y*sn);
 
     /*SDL_RenderDrawPoint(gRenderer, */
     /*                   player->pos.x + sides.y*fabs(dir_x/dir_y)*signf(dir_x),*/
