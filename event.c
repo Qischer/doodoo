@@ -81,7 +81,7 @@ int eventLoop(SDL_Event* e) {
         u32 idx = rh.cord.x + rh.cord.y * MAP_COL; 
         if (map[idx] == 1) {rh.hit = 1; break;}
 
-        if (rh.dist.x < rh.dist.y) {
+        if (rh.dist.x <= rh.dist.y) {
             rh.dist.x += delta.x;
             rh.cord.x += signf(dir_x);
         }
