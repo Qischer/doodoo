@@ -88,12 +88,10 @@ int eventLoop(SDL_Event* e) {
         }
 
         u32 idx = rh.cord.x + rh.cord.y * MAP_COL; 
-        if (map[idx] == 1) {rh.hit = 1; printf("hit");}
+        if (map[idx] == 1) {rh.hit = 1;}
 
         step++;
     } while (rh.hit == 0);
-
-    if (rh.hit == 1) printf("HIT wall! x: %d - y: %d\n", rh.cord.x, rh.cord.y);
 
     //printf("x: %d - y:%d\n", sides.x, sides.y);
     //printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
@@ -124,12 +122,13 @@ int eventLoop(SDL_Event* e) {
                         player->pos.x, player->pos.y);
 
     SDL_SetRenderDrawColor(gRenderer, 
-                           0xAF, 0x00, 0x00, 
+                           0xAF, 0xAF, 0x00, 
                            SDL_ALPHA_OPAQUE);
     
+    u32 hitdist = min(rh.dist.x, rh.dist.y);
     SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + sdist.x*_cs,
-                       player->pos.y + sdist.x*_sn);
+                       player->pos.x + hitdist*_cs,
+                       player->pos.y + hitdist*_sn);
 
     /*SDL_RenderDrawPoint(gRenderer, */
     /*                   player->pos.x + sdist.y*_cs,*/
