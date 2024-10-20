@@ -39,11 +39,11 @@ int eventLoop(SDL_Event* e) {
     float dir_x = player->dir.x;
     float dir_y = player->dir.y;
 
-    float tg = dir_y / dir_x; //tan 
-    float ctg = dir_x / dir_y; //cotan
+    float _tg = dir_y / dir_x; //tan 
+    float _ctg = dir_x / dir_y; //cotan
 
-    float sn = dir_y / sqrt(dir_y*dir_y + dir_x*dir_x);
-    float cs = dir_x / sqrt(dir_y*dir_y + dir_x*dir_x); 
+    float _sn = dir_y / sqrt(dir_y*dir_y + dir_x*dir_x);
+    float _cs = dir_x / sqrt(dir_y*dir_y + dir_x*dir_x); 
 
     float pos_x = player->pos.x;
     float pos_y = player->pos.y;
@@ -101,12 +101,12 @@ int eventLoop(SDL_Event* e) {
                         player->pos.x, player->pos.y);
     
     SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + sdist.x*cs,
-                       player->pos.y + sdist.x*sn);
+                       player->pos.x + sdist.x*_cs,
+                       player->pos.y + sdist.x*_sn);
 
     SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + sdist.y*cs,
-                       player->pos.y + sdist.y*sn);
+                       player->pos.x + sdist.y*_cs,
+                       player->pos.y + sdist.y*_sn);
 
     /*SDL_RenderDrawPoint(gRenderer, */
     /*                   player->pos.x + sides.y*fabs(dir_x/dir_y)*signf(dir_x),*/
