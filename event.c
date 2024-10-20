@@ -96,9 +96,12 @@ int eventLoop(SDL_Event* e) {
     }
 
     // Draw nearest point
-
     SDL_RenderDrawPoint(gRenderer, 
                         player->pos.x, player->pos.y);
+
+    SDL_SetRenderDrawColor(gRenderer, 
+                           0xAF, 0x00, 0x00, 
+                           SDL_ALPHA_OPAQUE);
     
     SDL_RenderDrawPoint(gRenderer, 
                        player->pos.x + sdist.x*_cs,
@@ -115,6 +118,10 @@ int eventLoop(SDL_Event* e) {
     /*SDL_RenderDrawPoint(gRenderer, */
     /*                   player->pos.x + sdist.y*player->dir.x,*/
     /*                   player->pos.y + sdist.y*player->dir.y);*/
+
+    SDL_SetRenderDrawColor(gRenderer, 
+                           0xAF, 0xAF, 0xAF, 
+                           SDL_ALPHA_OPAQUE);
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
