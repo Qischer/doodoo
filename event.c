@@ -88,7 +88,7 @@ int eventLoop(SDL_Event* e) {
 
         printf("%d, x:%d - y:%d\n", step, rh.cord.x, rh.cord.y);
         u32 idx = rh.cord.x + rh.cord.y * MAP_COL; 
-        if (map[idx] == 1) rh.hit = 1;
+        if (map[idx] == 1) {rh.hit = 1; printf("hit");}
 
         step++;
     } while (step <= 8 && rh.hit == 0);
