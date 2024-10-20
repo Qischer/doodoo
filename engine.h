@@ -6,6 +6,17 @@
 #include "config.h"
 #include "mad.h"
 
+//Macros
+ #define max(a,b) \
+({ __typeof__ (a) _a = (a); \
+    __typeof__ (b) _b = (b); \
+  _a > _b ? _a : _b; })
+
+ #define min(a,b) \
+({ __typeof__ (a) _a = (a); \
+    __typeof__ (b) _b = (b); \
+  _a < _b ? _a : _b; })
+
 // Type redefinitions
 typedef uint8_t u8;
 typedef int8_t i8;

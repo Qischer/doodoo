@@ -1,6 +1,5 @@
 #include "engine.h"
 #include <math.h>
-#include <stdio.h>
 
 u32 box_w;
 u32 box_h;
@@ -60,16 +59,28 @@ int eventLoop(SDL_Event* e) {
     sdist.x = sides.x * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
     sdist.y = sides.y * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
     
-    u8 hit = 0;
-    vec2i hitcord; 
-    hitcord.x = player->mapcord.x;
-    hitcord.y = player->mapcord.y;
+
+    struct rayhit {
+        u8 hit;
+        int dist;
+        vec2i cord; 
+    };
+
+    struct rayhit rh;
+
+    rh.dist = min(sdist.x, sdist.y);
+    rh.cord.x = player->mapcord.x;
+    rh.cord.y = player->mapcord.y;
     
-    /*while (hit == 0) {*/
-    /**/
-    /*    u32 idx = hitcord.x + hitcord.y * MAP_COL; */
-    /*    if (map[idx] == 1) hit = 1;*/
-    /*}*/
+    u8 step = 0; // depth step
+    while (step <= 4 && rh.hit == 0) {
+
+
+        u32 idx = rh.cord.x + rh.cord.y * MAP_COL; 
+        if (map[idx] == 1) rh.hit = 1;
+
+        step++;
+    }
 
     //printf("x: %d - y:%d\n", sides.x, sides.y);
     //printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
@@ -104,20 +115,12 @@ int eventLoop(SDL_Event* e) {
                            SDL_ALPHA_OPAQUE);
     
     SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + sdist.x*_cs,
-                       player->pos.y + sdist.x*_sn);
-
-    SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + sdist.y*_cs,
-                       player->pos.y + sdist.y*_sn);
+                       player->pos.x + rh.dist*_cs,
+                       player->pos.y + rh.dist*_sn);
 
     SDL_SetRenderDrawColor(gRenderer, 
                            0xAF, 0xAF, 0xAF, 
                            SDL_ALPHA_OPAQUE);
-
-    SDL_RenderDrawPoint(gRenderer, 
-                       player->pos.x + (sdist.y + delta.y)*_cs,
-                       player->pos.y + (sdist.y + delta.y)*_sn);
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
