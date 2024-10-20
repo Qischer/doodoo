@@ -1,5 +1,6 @@
 #include "engine.h"
 #include <math.h>
+#include <stdio.h>
 
 u32 box_w;
 u32 box_h;
@@ -56,8 +57,8 @@ int eventLoop(SDL_Event* e) {
     sides.y = dir_y < 0 ? (u32)pos_y % box_h : box_h - ((u32)pos_y % box_h);
 
     vec2i sdist;
-    sdist.x = sides.x * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
-    sdist.y = sides.y * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
+    sdist.x = sides.x * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x))); // distance from player to col
+    sdist.y = sides.y * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y))); // distance from player to row
     
 
     struct rayhit {
@@ -77,7 +78,12 @@ int eventLoop(SDL_Event* e) {
     u8 step = 0; // depth step
     do {
         if (rh.dist.x < rh.dist.y) {
-
+            rh.dist.x += delta.x;
+            rh.cord.x += signf(dir_x);
+        }
+        else {
+            rh.dist.y += delta.y;
+            rh.cord.y += signf(dir_y);
         }
 
         u32 idx = rh.cord.x + rh.cord.y * MAP_COL; 
@@ -85,6 +91,8 @@ int eventLoop(SDL_Event* e) {
 
         step++;
     } while (step <= 4 && rh.hit == 0);
+
+    if (rh.hit) printf("HIT wall! x: %d - y: %d\n", rh.cord.x, rh.cord.y);
 
     //printf("x: %d - y:%d\n", sides.x, sides.y);
     //printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
