@@ -84,7 +84,13 @@ int eventLoop(SDL_Event* e) {
         render_ray(&rh1);
     }
 
+    for (i = 0; i < ray_n; i++) {
+        float x = dir_x * cosf(-i*phi) - dir_y * sinf(-i*phi);
+        float y = dir_x * sinf(-i*phi) + dir_y * cosf(-i*phi);
 
+        rh1 = raycast(x, y);
+        render_ray(&rh1);
+    }
     /*u32 i;*/
     /*for (i = 0; i < ray_n; i++) {*/
     /*    struct rayhit rh = raycast(sweep.x, sweep.y);*/
