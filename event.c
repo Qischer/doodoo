@@ -64,14 +64,21 @@ int eventLoop(SDL_Event* e) {
                         player->pos.x, player->pos.y);
 
     //Sweep 
-    u32 ray_n = 10; 
+    u32 ray_n = 1; 
     float phi = FOV / ray_n;
 
     vec2 sweep;
     sweep.x = dir_x;
     sweep.y = dir_y;
 
-    struct rayhit rh1 = raycast(sweep.x, sweep.y);
+    struct rayhit rh1;
+    rh1 = raycast(sweep.x, sweep.y);
+    render_ray(&rh1);
+
+    sweep.x = sweep.x * cosf(phi) - sweep.x * sinf(phi);
+    sweep.y = sweep.y * sinf(phi) + sweep.y * cosf(phi);
+
+    rh1 = raycast(sweep.x, sweep.y);
     render_ray(&rh1);
 
     /*u32 i;*/
