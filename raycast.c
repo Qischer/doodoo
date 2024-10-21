@@ -7,10 +7,6 @@ struct rayhit raycast(float dir_x, float dir_y) {
     float pos_x = player->pos.x;
     float pos_y = player->pos.y;
 
-    float _sn = dir_y / sqrt(dir_y*dir_y + dir_x*dir_x);
-    float _cs = dir_x / sqrt(dir_y*dir_y + dir_x*dir_x); 
-
-
     vec2i delta;
     delta.x = box_w * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
     delta.y = box_h * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
