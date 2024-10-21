@@ -71,14 +71,24 @@ int eventLoop(SDL_Event* e) {
     sweep.x = dir_x * cosf(-FOV) - dir_y * sinf(-FOV);
     sweep.y = dir_x * sinf(-FOV) + dir_y * cosf(-FOV);
 
-    u32 i;
-    for (i = 0; i < ray_n; i++) {
-        struct rayhit rh = raycast(sweep.x, sweep.y);
-        render_ray(&rh);
+    struct rayhit rh;
+    rh= raycast(sweep.x, sweep.y);
+    render_ray(&rh);
 
-        sweep.x = sweep.x * cosf(phi) - sweep.x * sinf(phi);
-        sweep.y = sweep.y * sinf(phi) + sweep.y * cosf(phi);
-    }
+    sweep.x = sweep.x * cosf(phi) - sweep.x * sinf(phi);
+    sweep.y = sweep.y * sinf(phi) + sweep.y * cosf(phi);
+
+    rh= raycast(sweep.x, sweep.y);
+    render_ray(&rh);
+
+    /*u32 i;*/
+    /*for (i = 0; i < ray_n; i++) {*/
+    /*    struct rayhit rh = raycast(sweep.x, sweep.y);*/
+    /*    render_ray(&rh);*/
+    /**/
+    /*    sweep.x = sweep.x * cosf(phi) - sweep.x * sinf(phi);*/
+    /*    sweep.y = sweep.y * sinf(phi) + sweep.y * cosf(phi);*/
+    /*}*/
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
