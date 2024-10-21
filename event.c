@@ -37,10 +37,6 @@ int eventLoop(SDL_Event* e) {
     float dir_x = player->dir.x;
     float dir_y = player->dir.y;
 
-    float _sn = dir_y / sqrt(dir_y*dir_y + dir_x*dir_x);
-    float _cs = dir_x / sqrt(dir_y*dir_y + dir_x*dir_x); 
-    
-    struct rayhit rh = raycast(dir_x, dir_y);
 
     if ( e->type == SDL_KEYDOWN ) {
         SDL_KeyCode code = e->key.keysym.sym; 
@@ -67,6 +63,7 @@ int eventLoop(SDL_Event* e) {
     SDL_RenderDrawPoint(gRenderer, 
                         player->pos.x, player->pos.y);
 
+    struct rayhit rh = raycast(dir_x, dir_y);
     render_ray(&rh);
 
     SDL_RenderDrawLine(gRenderer, 
