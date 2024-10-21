@@ -23,23 +23,25 @@ struct rayhit raycast(float dir_x, float dir_y) {
     hit.cord.x = player->mapcord.x;
     hit.cord.y = player->mapcord.y;
 
-    hit.dist.x = sdist.x;
-    hit.dist.y = sdist.y;
+    hit.side_dist.x = sdist.x;
+    hit.side_dist.y = sdist.y;
     
     while (1) {
         u32 idx = hit.cord.x + hit.cord.y * MAP_COL; 
         if (map[idx] == 1) {hit.hit = 1; break;}
 
-        if (hit.dist.x <= hit.dist.y) {
-            hit.dist.x += delta.x;
+        if (hit.side_dist.x <= hit.side_dist.y) {
+            hit.side_dist.x += delta.x;
             hit.cord.x += signf(dir_x);
         }
         else {
-            hit.dist.y += delta.y;
+            hit.side_dist.y += delta.y;
             hit.cord.y += signf(dir_y);
         }
 
     }
+
+    hit.hit_dist = max(hit.side_dist.x - delta.x, hit.side_dist.y - delta.y);
     
     return hit;
 }

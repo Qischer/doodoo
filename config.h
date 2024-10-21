@@ -4,7 +4,7 @@
 #define MAP_ROW 6
 #define MAP_COL 8
 
-#define FOV 30
+#define FOV 30.0f
 
 
 /* Player Stat */

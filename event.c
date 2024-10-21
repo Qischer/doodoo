@@ -79,11 +79,11 @@ int eventLoop(SDL_Event* e) {
     SDL_SetRenderDrawColor(gRenderer, 
                            0xAF, 0x00, 0x00, 
                            SDL_ALPHA_OPAQUE);
-    u32 hitdist = max(rh.dist.x - delta.x, rh.dist.y - delta.y);
+
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
-                       player->pos.x + hitdist*_cs,
-                       player->pos.y + hitdist*_sn);
+                       player->pos.x + rh.hit_dist*_cs,
+                       player->pos.y + rh.hit_dist*_sn);
 
 
     SDL_SetRenderDrawColor(gRenderer, 
