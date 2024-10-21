@@ -69,7 +69,7 @@ int eventLoop(SDL_Event* e) {
 
     vec2 sweep;
     sweep.x = dir_x * cosf(-FOV) - dir_y * sinf(-FOV);
-    sweep.y = dir_x * sinf(-FOV) + dir_y * cosf(-FOV);
+    sweep.y = dir_y * sinf(-FOV) + dir_y * cosf(-FOV);
 
     struct rayhit rh1 = raycast(sweep.x, sweep.y);
     render_ray(&rh1);
