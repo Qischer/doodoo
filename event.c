@@ -75,8 +75,8 @@ int eventLoop(SDL_Event* e) {
     rh1 = raycast(sweep.x, sweep.y);
     render_ray(&rh1);
 
-    float x = sweep.x * cosf(phi) - sweep.x * sinf(phi);
-    float y = sweep.y * sinf(phi) + sweep.y * cosf(phi);
+    float x = sweep.x * cosf(th) - sweep.x * sinf(th);
+    float y = sweep.y * sinf(th) + sweep.y * cosf(th);
 
     rh1 = raycast(x, y);
     render_ray(&rh1);
