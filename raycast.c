@@ -11,6 +11,9 @@ struct rayhit raycast(float dir_x, float dir_y) {
     delta.x = box_w * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
     delta.y = box_h * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
 
+    hit.dir.x = dir_x;
+    hit.dir.y = dir_y;
+
     vec2i sides;
     sides.x = dir_x < 0 ? (u32)pos_x % box_w : box_w - ((u32)pos_x % box_w);
     sides.y = dir_y < 0 ? (u32)pos_y % box_h : box_h - ((u32)pos_y % box_h);
@@ -44,4 +47,24 @@ struct rayhit raycast(float dir_x, float dir_y) {
     hit.hit_dist = max(hit.side_dist.x - delta.x, hit.side_dist.y - delta.y);
     
     return hit;
+}
+
+void render_ray(struct rayhit* hit) {
+    
+    float _sn = hit->dir.y / sqrt(hit->dir.y*hit->dir.y + hit->dir.x*hit->dir.x);
+    float _cs = hit->dir.x / sqrt(hit->dir.y*hit->dir.y + hit->dir.x*hit->dir.x); 
+
+    SDL_SetRenderDrawColor(gRenderer, 
+                           0xAF, 0x00, 0x00, 
+                           SDL_ALPHA_OPAQUE);
+
+    SDL_RenderDrawLine(gRenderer, 
+                       player->pos.x, player->pos.y, 
+                       player->pos.x + hit->hit_dist*_cs,
+                       player->pos.y + hit->hit_dist*_sn);
+
+
+    SDL_SetRenderDrawColor(gRenderer, 
+                           0xAF, 0xAF, 0xAF, 
+                           SDL_ALPHA_OPAQUE);
 }

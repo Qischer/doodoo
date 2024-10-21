@@ -65,12 +65,14 @@ extern struct player* player;
 // Raycaster
 struct rayhit {
     u8 hit;
-    vec2i cord; 
+    vec2 dir;
 
+    vec2i cord; 
     vec2i side_dist;
 
     u32 hit_dist;
 };
 
 extern struct rayhit raycast(float, float);
+extern void render_ray(struct rayhit*);
 

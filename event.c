@@ -39,15 +39,6 @@ int eventLoop(SDL_Event* e) {
 
     float _sn = dir_y / sqrt(dir_y*dir_y + dir_x*dir_x);
     float _cs = dir_x / sqrt(dir_y*dir_y + dir_x*dir_x); 
-
-    vec2i delta;
-    delta.x = box_w * sqrt(1 + ((dir_y * dir_y) / (dir_x * dir_x)));
-    delta.y = box_h * sqrt(1 + ((dir_x * dir_x) / (dir_y * dir_y)));
-
-    float pos_x = player->pos.x;
-    float pos_y = player->pos.y;
-    //printf("x: %d - y:%d\n", sides.x, sides.y);
-    //printf("x: %d - y:%d\n", signf(dir_x), signf(dir_y));
     
     struct rayhit rh = raycast(dir_x, dir_y);
 
@@ -76,19 +67,7 @@ int eventLoop(SDL_Event* e) {
     SDL_RenderDrawPoint(gRenderer, 
                         player->pos.x, player->pos.y);
 
-    SDL_SetRenderDrawColor(gRenderer, 
-                           0xAF, 0x00, 0x00, 
-                           SDL_ALPHA_OPAQUE);
-
-    SDL_RenderDrawLine(gRenderer, 
-                       player->pos.x, player->pos.y, 
-                       player->pos.x + rh.hit_dist*_cs,
-                       player->pos.y + rh.hit_dist*_sn);
-
-
-    SDL_SetRenderDrawColor(gRenderer, 
-                           0xAF, 0xAF, 0xAF, 
-                           SDL_ALPHA_OPAQUE);
+    render_ray(&rh);
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
