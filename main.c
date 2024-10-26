@@ -40,7 +40,6 @@ int main(int argc, char *argv[])
                                    0, 0, 0, 
                                    SDL_ALPHA_OPAQUE);
             SDL_RenderClear(gRenderer);
-
             eventLoop(&e);
 
             SDL_RenderPresent(gRenderer);

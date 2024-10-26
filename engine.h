@@ -44,7 +44,7 @@ extern SDL_Texture* gTexture;
 extern u32 box_w;
 extern u32 box_h;
 
-extern u32 pixels[SCREEN_HEIGHT][SCREEN_WIDTH];
+extern u32 pixels[SCREEN_WIDTH * SCREEN_HEIGHT];
 extern u8 map[MAP_ROW * MAP_COL];
 
 //Player State
