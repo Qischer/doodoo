@@ -2,6 +2,7 @@
 #include <SDL2/SDL_pixels.h>
 #include <SDL2/SDL_render.h>
 #include <math.h>
+#include <stdio.h>
 #include <string.h>
 #include <time.h>
 
@@ -114,6 +115,10 @@ int eventLoop(SDL_Event* e) {
         
         h_buffer[m+i] = rh1.hit_dist;
     }
+
+    for (i = 0; i < n; i++) printf("%d ", h_buffer[i]);
+
+    printf("\n");
 
 
     SDL_RenderDrawLine(gRenderer, 
