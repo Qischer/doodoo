@@ -116,7 +116,11 @@ int eventLoop(SDL_Event* e) {
     renderMap();
 
     if (player->view == FPS) {
-        memset(pixels, 0xFFFF00FF, sizeof(pixels));
+        memset(pixels, 0, sizeof(pixels));
+
+        int w = SCREEN_WIDTH / 2;
+        int h = SCREEN_HEIGHT / 2;
+        pixels[SCREEN_WIDTH * h + w] = 0xFF202020;
 
         SDL_UpdateTexture(gTexture, NULL, pixels, SCREEN_WIDTH * 4);
         SDL_RenderCopyEx(gRenderer, gTexture, NULL, NULL, 0.0, NULL, SDL_FLIP_VERTICAL);
