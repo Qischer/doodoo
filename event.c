@@ -75,13 +75,14 @@ int eventLoop(SDL_Event* e) {
                         player->pos.x, player->pos.y);
 
     //Sweep 
-    u32 ray_n = 10; 
+    u32 ray_n = 320; 
     float phi = FOV / ray_n;
 
     u32 n = 2 * ray_n;
     u32 h_buffer[n];
 
     memset(&h_buffer, 0, sizeof(h_buffer));
+    memset(pixels, 0, sizeof(pixels));
 
     vec2 sweep;
     sweep.x = dir_x;
@@ -116,7 +117,7 @@ int eventLoop(SDL_Event* e) {
         h_buffer[m-i] = rh1.hit_dist;
     }
 
-    for (i = 0; i < n; i++) printf("%d ", h_buffer[i]);
+    for (i = 0; i < n; i++) renderVline(i, SCREEN_HEIGHT - h_buffer[i]);
 
     printf("\n");
 
@@ -128,7 +129,6 @@ int eventLoop(SDL_Event* e) {
     renderMap();
 
     if (player->view == FPS) {
-        memset(pixels, 0, sizeof(pixels));
 
         int w = SCREEN_WIDTH / 2;
         //int h = SCREEN_HEIGHT / 2;
