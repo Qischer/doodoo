@@ -131,11 +131,9 @@ int eventLoop(SDL_Event* e) {
         memset(pixels, 0, sizeof(pixels));
 
         int w = SCREEN_WIDTH / 2;
-        int h = SCREEN_HEIGHT / 2;
+        //int h = SCREEN_HEIGHT / 2;
 
-        int i;
-        for (i = 0; i < 100; i++) pixels[SCREEN_WIDTH*(h+i) + w] = 0xFF1010FF;
-
+        renderVline(w, 100);
         SDL_UpdateTexture(gTexture, NULL, pixels, SCREEN_WIDTH * 4);
         SDL_RenderCopyEx(gRenderer, gTexture, NULL, NULL, 0.0, NULL, SDL_FLIP_VERTICAL);
     }
@@ -172,8 +170,8 @@ void renderVline(u32 w, u32 h) {
     u32 h_offset = SCREEN_HEIGHT / 2;
 
     int i;
-    for (i = 0; i < h/2; i++) pixels[w + SCREEN_HEIGHT* (h_offset+i)] = 0xFF1010FF; 
-    for (i = 0; i < h/2; i++) pixels[w + SCREEN_HEIGHT* (h_offset-i)] = 0xFF1010FF; 
+    for (i = 0; i < h/2; i++) pixels[w + SCREEN_WIDTH* (h_offset+i)] = 0xFF1010FF; 
+    for (i = 0; i < h/2; i++) pixels[w + SCREEN_WIDTH* (h_offset-i)] = 0xFF1010FF; 
     return;
 }
 
