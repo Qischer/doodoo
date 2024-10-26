@@ -104,7 +104,7 @@ int eventLoop(SDL_Event* e) {
         rh1 = raycast(x, y);
         render_ray(&rh1);
 
-        h_buffer[m+i] = rh1.hit_dist;
+        h_buffer[m+i] = rh1.hit_dist * cosf(i*phi);
     }
 
     for (i = 0; i < ray_n; i++) {
@@ -114,7 +114,7 @@ int eventLoop(SDL_Event* e) {
         rh1 = raycast(x, y);
         render_ray(&rh1);
         
-        h_buffer[m-i] = rh1.hit_dist;
+        h_buffer[m-i] = rh1.hit_dist * cosf(i*phi);
     }
 
     for (i = 0; i < n; i++) {
