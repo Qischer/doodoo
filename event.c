@@ -166,6 +166,8 @@ void renderMap() {
 }
 
 void renderVline(u32 w, u32 h) {
+
+    if (h < 0 || h >= SCREEN_HEIGHT) return;
     
     u32 h_offset = SCREEN_HEIGHT / 2;
 
