@@ -133,10 +133,8 @@ int eventLoop(SDL_Event* e) {
         int w = SCREEN_WIDTH / 2;
         int h = SCREEN_HEIGHT / 2;
 
-        pixels[SCREEN_WIDTH * h + w] = 0xFF1010FF;
-        pixels[SCREEN_WIDTH * h + (w+1)] = 0xFF1010FF;
-        pixels[SCREEN_WIDTH * h + (w+2)] = 0xFF1010FF;
-        pixels[SCREEN_WIDTH * h + (w+3)] = 0xFF1010FF;
+        int i;
+        for (i = 0; i < 100; i++) pixels[SCREEN_WIDTH*(h+i) + w] = 0xFF1010FF;
 
         SDL_UpdateTexture(gTexture, NULL, pixels, SCREEN_WIDTH * 4);
         SDL_RenderCopyEx(gRenderer, gTexture, NULL, NULL, 0.0, NULL, SDL_FLIP_VERTICAL);
