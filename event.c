@@ -41,6 +41,10 @@ int eventLoop(SDL_Event* e) {
     if ( e->type == SDL_KEYDOWN ) {
         SDL_KeyCode code = e->key.keysym.sym; 
 
+        if (code == SDLK_m) {
+            player->view = player->view == MAP ? FPS : MAP;
+        }
+
         if (code == SDLK_w ){
             player->pos.x += speed * player->dir.x;
             player->pos.y += speed * player->dir.y;

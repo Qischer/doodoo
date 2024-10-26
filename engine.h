@@ -47,11 +47,16 @@ extern u32 box_h;
 extern u32 pixels[SCREEN_HEIGHT][SCREEN_WIDTH];
 extern u8 map[MAP_ROW * MAP_COL];
 
-
 //Player State
+typedef enum {
+    MAP,
+    FPS,
+} View;
+
 struct player {
     vec2 pos;
     vec2 dir;
+    View view;
 
     vec2i mapcord;
 };
