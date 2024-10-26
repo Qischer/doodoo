@@ -50,6 +50,7 @@ int init() {
 
     player->dir = pldir;
     player->pos = plpos;
+    player->view = MAP;
 
     return SUCCESS;
 }
