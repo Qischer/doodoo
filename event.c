@@ -118,7 +118,7 @@ int eventLoop(SDL_Event* e) {
     }
 
     for (i = 0; i < n; i++) {
-        if (h_buffer[i] <= 0) continue;
+        if (h_buffer[i] <= 0) {continue; renderVline(i, SCREEN_HEIGHT);}
         renderVline(i, 69 * SCREEN_HEIGHT / h_buffer[i] + 50);
     }
 
@@ -166,7 +166,9 @@ void renderMap() {
 
 void renderVline(u32 w, u32 h) {
 
-    if (h < 0 || h >= SCREEN_HEIGHT) return;
+    if (h < 0) return;
+
+    if (h > SCREEN_HEIGHT) h = SCREEN_HEIGHT;
     
     u32 h_offset = SCREEN_HEIGHT / 2;
 
