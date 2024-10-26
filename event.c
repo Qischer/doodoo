@@ -78,7 +78,7 @@ int eventLoop(SDL_Event* e) {
     u32 ray_n = 10; 
     float phi = FOV / ray_n;
 
-    u32 n = 2 * ray_n + 1;
+    u32 n = 2 * ray_n;
     u32 h_buffer[n];
 
     memset(&h_buffer, 0, sizeof(h_buffer));
@@ -103,7 +103,7 @@ int eventLoop(SDL_Event* e) {
         rh1 = raycast(x, y);
         render_ray(&rh1);
 
-        h_buffer[m-i] = rh1.hit_dist;
+        h_buffer[m+i] = rh1.hit_dist;
     }
 
     for (i = 0; i < ray_n; i++) {
@@ -113,13 +113,12 @@ int eventLoop(SDL_Event* e) {
         rh1 = raycast(x, y);
         render_ray(&rh1);
         
-        h_buffer[m+i] = rh1.hit_dist;
+        h_buffer[m-i] = rh1.hit_dist;
     }
 
     for (i = 0; i < n; i++) printf("%d ", h_buffer[i]);
 
     printf("\n");
-
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
