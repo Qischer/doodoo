@@ -34,6 +34,7 @@ extern void closeWindow(void);
 extern int eventInit(void);
 extern int eventLoop(SDL_Event* e);
 extern void renderMap();
+extern void renderVline(u32, u32);
 
 //Global variables
 extern SDL_Window* gWindow; 
