@@ -119,7 +119,7 @@ int eventLoop(SDL_Event* e) {
 
     for (i = 0; i < n; i++) {
         if (h_buffer[i] <= 0) continue;
-        renderVline(i, SCREEN_HEIGHT / h_buffer[i]);
+        renderVline(i, 10* SCREEN_HEIGHT / h_buffer[i]);
     }
 
     printf("\n");
