@@ -2,6 +2,7 @@
 #include <SDL2/SDL_pixels.h>
 #include <SDL2/SDL_render.h>
 #include <math.h>
+#include <string.h>
 #include <time.h>
 
 u32 box_w;
@@ -78,6 +79,8 @@ int eventLoop(SDL_Event* e) {
 
     u32 n = 2 * ray_n + 1;
     u32 h_buffer[n];
+
+    memset(&h_buffer, 0, sizeof(h_buffer));
 
     vec2 sweep;
     sweep.x = dir_x;
