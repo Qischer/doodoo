@@ -32,10 +32,6 @@ int main(int argc, char *argv[])
                 quit = 1;
                 break;
             }
-            if (player->view == FPS) {
-                printf("toggle fps view!\n");
-            }
-
             SDL_SetRenderDrawColor(gRenderer, 
                                    0, 0, 0, 
                                    SDL_ALPHA_OPAQUE);
