@@ -117,7 +117,10 @@ int eventLoop(SDL_Event* e) {
         h_buffer[m-i] = rh1.hit_dist * cosf(i*phi);
     }
 
-    for (i = 0; i < n; i++) renderVline(i, SCREEN_HEIGHT / h_buffer[i]);
+    for (i = 0; i < n; i++) {
+        if (h_buffer[i] <= 0) continue;
+        renderVline(i, SCREEN_HEIGHT / h_buffer[i]);
+    }
 
     printf("\n");
 
