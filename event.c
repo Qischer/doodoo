@@ -1,4 +1,5 @@
 #include "engine.h"
+#include <SDL2/SDL_pixels.h>
 #include <SDL2/SDL_render.h>
 #include <math.h>
 #include <time.h>
@@ -120,7 +121,7 @@ int eventLoop(SDL_Event* e) {
 
         int w = SCREEN_WIDTH / 2;
         int h = SCREEN_HEIGHT / 2;
-        pixels[SCREEN_WIDTH * h + w] = 0xFFFFFFFF;
+        pixels[SCREEN_WIDTH * h + w] = 0xFF1010FF;
 
         SDL_UpdateTexture(gTexture, NULL, pixels, SCREEN_WIDTH * 4);
         SDL_RenderCopyEx(gRenderer, gTexture, NULL, NULL, 0.0, NULL, SDL_FLIP_VERTICAL);
