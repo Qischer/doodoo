@@ -122,8 +122,6 @@ int eventLoop(SDL_Event* e) {
         renderVline(i, 69 * SCREEN_HEIGHT / h_buffer[i] + 50);
     }
 
-    printf("\n");
-
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
                        player->pos.x + s*player->dir.x,
