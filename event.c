@@ -131,7 +131,7 @@ int eventLoop(SDL_Event* e) {
         memset(pixels, 0, sizeof(pixels));
 
         int w = SCREEN_WIDTH / 2;
-        int h = SCREEN_HEIGHT / 2;
+        //int h = SCREEN_HEIGHT / 2;
 
         renderVline(w, 100);
 
