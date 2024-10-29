@@ -80,6 +80,7 @@ int eventLoop(SDL_Event* e) {
 
     u32 n = 2 * ray_n;
     u32 h_buffer[n];
+    u8 shbuf[n];
 
     memset(&h_buffer, 0, sizeof(h_buffer));
     memset(pixels, 0, sizeof(pixels));
@@ -105,6 +106,7 @@ int eventLoop(SDL_Event* e) {
         render_ray(&rh1);
 
         h_buffer[m+i] = rh1.hit_dist * cosf(i*phi);
+        shbuf[m+1] = rh1.hit_side;
     }
 
     for (i = 0; i < ray_n; i++) {
@@ -115,11 +117,12 @@ int eventLoop(SDL_Event* e) {
         render_ray(&rh1);
         
         h_buffer[m-i] = rh1.hit_dist * cosf(i*phi);
+        shbuf[m-1] = rh1.hit_side;
     }
 
     for (i = 0; i < n; i++) {
-        if (h_buffer[i] <= 0) {continue; renderVline(i, SCREEN_HEIGHT);}
-        renderVline(i, 69 * SCREEN_HEIGHT / h_buffer[i] + 50);
+        if (h_buffer[i] <= 0) {continue;}
+        renderVline(i, 69 * SCREEN_HEIGHT / h_buffer[i] + 50, shbuf[i]);
     }
 
     SDL_RenderDrawLine(gRenderer, 
@@ -162,7 +165,7 @@ void renderMap() {
     }
 }
 
-void renderVline(u32 w, u32 h) {
+void renderVline(u32 w, u32 h, u8 sh) {
 
     if (h < 0) return;
 
@@ -171,8 +174,10 @@ void renderVline(u32 w, u32 h) {
     u32 h_offset = SCREEN_HEIGHT / 2;
 
     int i;
-    for (i = 0; i < h/2; i++) pixels[w + SCREEN_WIDTH* (h_offset+i)] = 0xFF1010FF; 
-    for (i = 0; i < h/2; i++) pixels[w + SCREEN_WIDTH* (h_offset-i)] = 0xFF1010FF; 
+    for (i = 0; i < h/2; i++) {
+        pixels[w + SCREEN_WIDTH* (h_offset+i)] = sh == 1 ? 0xFF1010FF : 0xDF1010FF; 
+        pixels[w + SCREEN_WIDTH* (h_offset-i)] = sh == 1 ? 0xFF1010FF : 0xDF1010FF;   
+    }
     return;
 }
 

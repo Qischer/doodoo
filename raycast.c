@@ -45,6 +45,7 @@ struct rayhit raycast(float dir_x, float dir_y) {
     }
 
     hit.hit_dist = max(hit.side_dist.x - delta.x, hit.side_dist.y - delta.y);
+    hit.hit_side = (hit.side_dist.x - delta.x) < (hit.side_dist.y - delta.y) ? 1 : 0;
     
     return hit;
 }

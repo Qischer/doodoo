@@ -34,7 +34,7 @@ extern void closeWindow(void);
 extern int eventInit(void);
 extern int eventLoop(SDL_Event* e);
 extern void renderMap();
-extern void renderVline(u32, u32);
+extern void renderVline(u32, u32, u8);
 
 //Global variables
 extern SDL_Window* gWindow; 
@@ -77,6 +77,7 @@ struct rayhit {
     vec2i side_dist;
 
     u32 hit_dist;
+    u8 hit_side;
 };
 
 extern struct rayhit raycast(float, float);
