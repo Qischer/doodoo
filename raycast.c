@@ -45,19 +45,18 @@ struct rayhit raycast(float dir_x, float dir_y) {
 
     }
 
-    if (hit.side_dist.x - delta.x > hit.side_dist.y - delta.y) {
-        
-        hit.hit_dist = hit.side_dist.x - delta.x;
-        hit.hit_side = 1;
-    }
-    else {
-        hit.hit_dist = hit.side_dist.y - delta.y;
-        hit.hit_side = 0;
-    }
+    /*if (hit.side_dist.x - delta.x > hit.side_dist.y - delta.y) {*/
+    /**/
+    /*    hit.hit_dist = hit.side_dist.x - delta.x;*/
+    /*    hit.hit_side = 1;*/
+    /*}*/
+    /*else {*/
+    /*    hit.hit_dist = hit.side_dist.y - delta.y;*/
+    /*    hit.hit_side = 0;*/
+    /*}*/
 
-    //hit.hit_dist = max(hit.side_dist.x - delta.x, hit.side_dist.y - delta.y);
-    
-    //hit.hit_side = (hit.side_dist.x - delta.x) < (hit.side_dist.y - delta.y) ? 1 : 0;
+    hit.hit_dist = max(hit.side_dist.x - delta.x, hit.side_dist.y - delta.y);
+    hit.hit_side = (hit.side_dist.x - delta.x) < (hit.side_dist.y - delta.y) ? 1 : 0;
     
     return hit;
 }
