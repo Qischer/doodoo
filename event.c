@@ -75,7 +75,7 @@ int eventLoop(SDL_Event* e) {
                         player->pos.x, player->pos.y);
 
     //Sweep 
-    u32 ray_n = 10; 
+    u32 ray_n = 320; 
     float phi = FOV / ray_n;
 
     u32 n = 2 * ray_n;
