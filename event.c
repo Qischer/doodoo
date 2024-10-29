@@ -97,6 +97,7 @@ int eventLoop(SDL_Event* e) {
     render_ray(&rh1);
 
     h_buffer[m] = rh1.hit_dist;
+    shbuf[m] = rh1.hit_side;
 
     int i;
     for (i = 0; i < ray_n; i++) {
@@ -107,7 +108,7 @@ int eventLoop(SDL_Event* e) {
         render_ray(&rh1);
 
         h_buffer[m+i] = rh1.hit_dist * cosf(i*phi);
-        shbuf[m+1] = rh1.hit_side;
+        shbuf[m+i] = rh1.hit_side;
     }
 
     for (i = 0; i < ray_n; i++) {
@@ -118,13 +119,13 @@ int eventLoop(SDL_Event* e) {
         render_ray(&rh1);
         
         h_buffer[m-i] = rh1.hit_dist * cosf(i*phi);
-        shbuf[m-1] = rh1.hit_side;
+        shbuf[m-i] = rh1.hit_side;
     }
 
     for (i = 0; i < n; i++) {
         if (h_buffer[i] <= 0) {continue;}
         renderVline(i, 69 * SCREEN_HEIGHT / h_buffer[i] + 50, shbuf[i]);
-        //printf("%d ", shbuf[i]);
+        printf("%d ", shbuf[i]);
     }
 
     printf("\n");
