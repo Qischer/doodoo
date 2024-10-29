@@ -123,7 +123,10 @@ int eventLoop(SDL_Event* e) {
     for (i = 0; i < n; i++) {
         if (h_buffer[i] <= 0) {continue;}
         renderVline(i, 69 * SCREEN_HEIGHT / h_buffer[i] + 50, shbuf[i]);
+        printf("%d ", shbuf[i]);
     }
+
+    printf("\n");
 
     SDL_RenderDrawLine(gRenderer, 
                        player->pos.x, player->pos.y, 
@@ -176,7 +179,7 @@ void renderVline(u32 w, u32 h, u8 sh) {
     int i;
     for (i = 0; i < h/2; i++) {
         pixels[w + SCREEN_WIDTH* (h_offset+i)] = sh == 1 ? 0xFF1010FF : 0xDF1010FF; 
-        pixels[w + SCREEN_WIDTH* (h_offset-i)] = sh == 1 ? 0xFF1010FF : 0xDFDF10FF;   
+        pixels[w + SCREEN_WIDTH* (h_offset-i)] = sh == 1 ? 0xFF1010FF : 0xDF1010FF;   
     }
     return;
 }
