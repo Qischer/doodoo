@@ -101,6 +101,12 @@ int eventLoop(SDL_Event* e) {
 
     int i;
     for (i = 0; i < ray_n; i++) {
+        int j;
+        for (j = 0; j < SCREEN_HEIGHT / 2; j++)
+        pixels[i + SCREEN_WIDTH* j] = 0x0F0F0FA0;
+    }
+
+    for (i = 0; i < ray_n; i++) {
         float x = dir_x * cosf(i*phi) - dir_y * sinf(i*phi);
         float y = dir_x * sinf(i*phi) + dir_y * cosf(i*phi);
 
