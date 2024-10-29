@@ -124,7 +124,7 @@ int eventLoop(SDL_Event* e) {
     for (i = 0; i < n; i++) {
         if (h_buffer[i] <= 0) {continue;}
         renderVline(i, 69 * SCREEN_HEIGHT / h_buffer[i] + 50, shbuf[i]);
-        printf("%d ", shbuf[i]);
+        //printf("%d ", shbuf[i]);
     }
 
     printf("\n");

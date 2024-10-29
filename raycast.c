@@ -1,4 +1,5 @@
 #include "engine.h"
+#include <stdio.h>
 
 struct rayhit raycast(float dir_x, float dir_y) {
 
@@ -48,10 +49,12 @@ struct rayhit raycast(float dir_x, float dir_y) {
         
         hit.hit_dist = hit.side_dist.x - delta.x;
         hit.hit_side = 1;
+        printf("1");
     }
     else {
         hit.hit_dist = hit.side_dist.y - delta.y;
         hit.hit_side = 0;
+        printf("0");
     }
 
     //hit.hit_dist = max(hit.side_dist.x - delta.x, hit.side_dist.y - delta.y);
