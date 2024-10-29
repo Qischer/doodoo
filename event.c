@@ -83,6 +83,7 @@ int eventLoop(SDL_Event* e) {
     u8 shbuf[n];
 
     memset(&h_buffer, 0, sizeof(h_buffer));
+    memset(&shbuf, 0, sizeof(shbuf));
     memset(pixels, 0, sizeof(pixels));
 
     vec2 sweep;
