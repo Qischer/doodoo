@@ -180,8 +180,8 @@ void renderVline(u32 w, u32 h, u8 sh) {
 
     int i;
     for (i = 0; i < h/2; i++) {
-        pixels[w + SCREEN_WIDTH* (h_offset+i)] = sh == 1 ? 0xFF1010FF : 0xFF1010AF; 
-        pixels[w + SCREEN_WIDTH* (h_offset-i)] = sh == 1 ? 0xFF1010FF : 0xFF1010AF;   
+        pixels[w + SCREEN_WIDTH* (h_offset+i)] = sh == 1 ? 0xFF10AFFF : 0xFF10AFAF; 
+        pixels[w + SCREEN_WIDTH* (h_offset-i)] = sh == 1 ? 0xFF10AFFF : 0xFF10AFAF;   
     }
     return;
 }
